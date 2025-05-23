@@ -7,6 +7,7 @@
 
 class Slider : public Engine::ImageButton {
 private:
+    float Width, Height;
     Image Bar;
     Image End1;
     Image End2;

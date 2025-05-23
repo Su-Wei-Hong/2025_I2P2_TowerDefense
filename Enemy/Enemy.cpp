@@ -70,6 +70,10 @@ void Enemy::UpdatePath(const std::vector<std::vector<int>> &mapDistance) {
             int y = pos.y + dir.y;
             if (x < 0 || x >= PlayScene::MapWidth || y < 0 || y >= PlayScene::MapHeight || mapDistance[y][x] != num - 1)
                 continue;
+            // if(mapDistance[y][x] == num - 1){
+            //     pos = Engine::Point(x, y);
+            //     break;
+            // }
             nextHops.emplace_back(x, y);
         }
         // Choose arbitrary one.

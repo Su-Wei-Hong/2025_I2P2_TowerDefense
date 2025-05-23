@@ -50,7 +50,9 @@ void SettingsScene::BackOnClick(int stage) {
 void SettingsScene::BGMSlideOnValueChanged(float value) {
     AudioHelper::ChangeSampleVolume(bgmInstance, value);
     AudioHelper::BGMVolume = value;
+    //labelBGM->SetText("BGM: " + std::to_string(static_cast<int>(value * 100)) + "%");
 }
 void SettingsScene::SFXSlideOnValueChanged(float value) {
     AudioHelper::SFXVolume = value;
+    //labelSFX->SetText("SFX: " + std::to_string(static_cast<int>(value * 100)) + "%");
 }
