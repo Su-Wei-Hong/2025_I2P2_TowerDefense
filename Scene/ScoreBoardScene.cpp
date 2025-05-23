@@ -13,17 +13,17 @@ std::map<std::string,int> record;
 std::vector<std::pair<std::string,int>> temp;
 int cur_page = 1;
 int max_page = 0;
-int w = Engine::GameEngine::GetInstance().GetScreenSize().x;
-int h = Engine::GameEngine::GetInstance().GetScreenSize().y;
-int halfW = w / 2;
-int halfH = h / 2;
+int w,h,halfW,halfH;
 float lineSpacing = 40; 
 float startX = 400;  // Adjust this to center or align left
 float startY = 150;  // Starting Y position
 void ScoreBoardScene::Initialize(){
     record.clear();
-    
-    AddNewObject(new Engine::Label("Score Board", "pirulen.ttf", 60, halfW, halfH / 5 + 10 , 10, 255, 255, 255, 0.5, 0.5));
+    w = Engine::GameEngine::GetInstance().GetScreenSize().x;
+    h = Engine::GameEngine::GetInstance().GetScreenSize().y;
+    halfW = w / 2;
+    halfH = h / 2;
+    AddNewObject(new Engine::Label("Score Board", "pirulen.ttf", 60, halfW, halfH * 1 / 6 , 10, 255, 255, 255, 0.5, 0.5));
     Engine::ImageButton *btn;
     std::ifstream fin("Resource/scoreboard.txt");
     std::string name;
@@ -52,15 +52,15 @@ void ScoreBoardScene::Initialize(){
     int b = temp.size()>12?12:temp.size();
     max_page = temp.size()/12 + 1;
     for(int i=0;i<b;i++){
-        AddNewObject(new Engine::Label(
-            temp[i].first, "pirulen.ttf", 32,
-            halfW-225, startY + i * lineSpacing,
-            255, 255, 255, 255, 0.0, 0.0));
+        // AddNewObject(new Engine::Label(
+        //     temp[i].first, "pirulen.ttf", 32,
+        //     halfW-225, startY + i * lineSpacing,
+        //     255, 255, 255, 255, 0.0, 0.0));
 
-        AddNewObject(new Engine::Label(
-            std::to_string(temp[i].second), "pirulen.ttf", 32,
-            halfW+200, startY + i * lineSpacing,
-            255, 255, 255, 255, 1, 0.0));
+        // AddNewObject(new Engine::Label(
+        //     std::to_string(temp[i].second), "pirulen.ttf", 32,
+        //     halfW+200, startY + i * lineSpacing,
+        //     255, 255, 255, 255, 1, 0.0));
 
         std::cout << i <<" ";
     }
